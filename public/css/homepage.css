@@ -1,0 +1,393 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* header */
+
+.header_left img{
+    object-fit: contain;
+    height: 80%;
+    margin-left: 5px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid whitesmoke;
+}
+
+.header_left {
+    display: flex;
+    align-items: center;
+}
+
+.header_left span{
+    padding: 10px;
+    cursor: pointer
+}
+
+.header_middle{
+    display: flex;
+    align-items: center;
+    flex: 0.7;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.material-symbols-outlined{
+    color:gray;
+}
+
+.header_middle input{
+    border: none;
+    outline-width: none;
+    width: 100%;
+    background-color: transparent;
+    padding: 10px;
+    font-size: medium;
+}
+
+.header_right{
+    display: flex;
+    padding-right: 20px;
+}
+
+.header_right span{
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Slidebar */
+
+.sidebar{
+    flex:0.2;
+    max-width: 300px;
+    padding-right:20px
+}   
+
+.sidebar_compose{
+    margin-top:15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    color:gray;
+    padding:15px;
+    border-radius: 30px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    border:none;
+    box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.75);
+}
+
+.sidebar_compose span{
+    margin-right:5px;
+}
+ 
+.sidebarOptions{
+    display:flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #818181
+}
+
+.sidebarOptions h3{
+    flex:1;
+    margin-left:10px;
+    font-weight: 400px;
+    font-size: 15px;
+    margin-top:5px;
+}
+
+.sidebarOptions:hover,
+.sidebarOptions:hover h3,
+.sidebarOptions:hover .material-symbols-outlined,
+.sidebarOptions_active,
+.sidebarOptions_active h3,
+.sidebarOptions_active .material-symbols-outlined{
+    background-color: whitesmoke;
+    color: #c04b37;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.sildebar_footer {
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar_footerIcon .material-symbols-outlined{
+    margin: 7px;   
+    cursor: pointer;
+}
+
+/* body main */
+
+.main_body{
+    display: flex;
+    height: 100vh;
+    margin-top: 26px;
+}
+
+body{
+    height: 100vh;
+    overflow-y: hidden;  
+}
+
+/* Email Lists */
+
+.emailLists{
+ flex: 1;
+ overflow: scroll;
+}
+
+.emailList_settings{
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid whitesmoke;
+    background-color: white;
+    z-index: 999;
+    padding: 8px
+}
+
+.emailLists_settingsLeft{
+    display: flex;
+    align-items: center;
+}
+
+.emailList_settings .material-symbols-outlined{
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.section{
+    display: flex;
+    align-items: center;
+    border-bottom-width: 2px;
+    padding:15px;
+    min-width: 200px;
+    cursor: pointer;
+    color:gray;
+    border-width: 0px;
+}
+
+.emailList_sections{
+    position: sticky;
+    top: 0;
+    display:flex;
+    background-color: white;
+    border-bottom: 1px solid whitesmoke;
+    z-index: 999;
+}
+
+.section_selected{
+    background-color: whitesmoke;
+    border-width: 3px;
+    color:red;
+    border-bottom: 3px solid red;
+}
+
+.section_selected .material-symbols-outlined{
+    color:#c04b37
+}
+
+
+.section:hover{
+    background-color: whitesmoke;
+    border-width: 3px;
+}
+
+.section h4{
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+
+.emailList_options{
+    display: flex;
+    align-items: center;
+}
+
+.emailList_options .material-symbols-outlined,input{
+    margin: 5px;
+}
+
+.emailList{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid whitesmoke;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.emailList:hover{
+    border-top:1px solid whitesmoke;
+    box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.24);
+
+}
+
+.emailList_message{
+    display: flex;
+    flex:0.8;
+    align-items: center;
+    font-size: 13px;
+}
+
+.emailList_message h4{
+    width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.emailList_title{
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    flex:0.2;
+}
+
+.emailList_time{    
+    padding-right: 15px;
+    font-size: 15px;
+    font-weight: bold ;
+}
+
+.emailList_time>p{
+    margin-top:12px;
+}
+
+.emailList_description{
+    font-weight: 400;
+    width: 400px;
+    color:gray;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+a{
+    text-decoration: none
+}
+
+div#exampleModal {
+    margin-top:190px;
+    width: 33%;
+    margin-right: 42px;
+    max-width: 800px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    left: inherit;
+}
+
+.modal-body>form>input{
+    width: 100%;
+    height: 10px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #f5f5f5;
+    outline: none;
+}
+.ck-editor__editable {
+    height: 28vh!important;
+    border: none!important;
+}
+
+.ck.ck-editor__editable_inline {
+    overflow: auto;
+    padding: 0 var(--ck-spacing-standard);
+    border: 1px solid transparent;
+}
+
+.modal-backdrop.show{
+    opacity: 0 !important;
+}
+
+.menu {
+    display: block;
+    background-color: white;    
+    border-radius: 5px;
+    box-shadow: 2px 2px 30px lightgrey;
+    position: absolute;
+    transform-origin: center;
+    z-index: 2;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  
+.menu.show {
+    opacity: 1;
+    transform: scale(1);
+    padding:10px 0;
+    transform-origin: top left;
+    border-radius: 5px;
+  }
+  
+  .menu-item {
+    display: block;
+    padding: 10px 30px;
+    transition: 0.1s;
+    background-color: indianred;
+    border-radius: 0px;
+  }
+  
+  .menu-item:hover {
+    background-color: red;
+    cursor: pointer;
+  }
+  
+ 
+
+  .out-click {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+  }
+
+  #group {
+    margin-top: 10px;  
+    padding: 0px 0px 0px 25px;
+    position: absolute;
+    left: 4%;
+    width: 80%;
+    top:7%;
+    font-family: 'Patrick Hand SC';
+    background-color: White;
+    opacity: 0.8;
+    border-style: dotted;
+    border-width: 5px;
+    border-color: LightBlue;
+    transition: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+  
+  #group:hover {
+    transform: scale(1.05);
+    left: 5%;
+    top: 10%;
+    opacity: 1;
+    border-color: LightBlue;
+    color: Salmon;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  
+  }   

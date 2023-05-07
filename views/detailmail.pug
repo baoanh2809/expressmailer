@@ -1,0 +1,405 @@
+extend base 
+block content
+  if(user)
+    .main_body
+      // slide bar
+      .sidebar
+        button.sidebar_compose(id="newEmail" data-toggle='modal' data-target='#exampleModal')
+          span.material-symbols-outlined Add
+          |Compose
+        a.sidebarOptions.sidebarOptions_active(href='/')
+          span.material-symbols-outlined inbox
+          h3 Inbox
+        a.sidebarOptions(href='/startedmail')
+          span.material-symbols-outlined star
+          h3 started
+        a.sidebarOptions(href='/trashmail')
+          span.material-symbols-outlined delete
+          h3 Trash
+        a.sidebarOptions(href='/importantmail')
+          span.material-symbols-outlined label_important
+          h3 Important
+        a.sidebarOptions(href='/sentmail')
+          span.material-symbols-outlined send
+          h3 Sent
+        a.sidebarOptions(href='/draftmail')
+          span.material-symbols-outlined drafts
+          h3 Drafts
+        a.sidebarOptions
+          span.material-symbols-outlined expand_more
+          h3 More
+        .sildebar_footer
+          .sidebar_footerIcons
+            span.material-symbols-outlined person
+            span.material-symbols-outlined duo
+            span.material-symbols-outlined phone
+      // slide bar End
+      .emailLists
+        // settings sends
+        .emailList_settings
+          .emailLists_settingsLeft
+            input(type='checkbox')
+            span.material-symbols-outlined  arrow_drop_down
+            span.material-symbols-outlined  redo
+            span.material-symbols-outlined  more_Vert
+          .emailLists_settingsRight
+            span.material-symbols-outlined  chevron_left
+            span.material-symbols-outlined  chevron_right
+            span.material-symbols-outlined  keyboard_hide
+            span.material-symbols-outlined settings
+        // setting End
+        // Section Started
+        .emailList_sections
+          .section.section_selected
+            span.material-symbols-outlined inbox
+            h4 Primary
+          .section
+            span.material-symbols-outlined people
+            h4 Social
+          .section
+            span.material-symbols-outlined local_offer
+            h4 Promotions
+        // Section End
+        // emailList Started
+        .emailList_sections
+            #group
+                .about(style="margin-top:5px")
+                    h4=`From: ${mail.from}`
+                    h2(style='text-align:center;font-size:32px')= mail.subject  
+                    br
+                .contact
+                    h2(style='font-size:32px') Content:
+                    h3(style="margin-left:50px")= mail.content                    
+               
+
+        // emailLists End
+    // Main Body End
+    // Modal
+    #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+      .modal-dialog(style='margin: 0px;' role='document')
+        .modal-content
+          .modal-header(style='background-color: black; color: aliceblue;')
+            h5#exampleModalLabel.modal-title New Email
+            button.close(type='button' style='color: gray;' data-dismiss='modal' aria-label='Close')
+              span(aria-hidden='true') &times;
+          .modal-body
+            form.form-mail-send
+              input#id(type='hidden' )
+              input#to(name='to' placeholder='To' type='email')
+              input#subject(name='subject' placeholder='Subject' type='text')
+              div(style='display: none')
+              .form-field.col.col-sm-12(style="padding:0px")
+                textarea#content.form-control(style='font-size:1rem ;height: 182px;'  rows='5' name='content' placeholder='Nhập nội dung của bạn*') 
+              .modal-bottom(style="display: flex; justify-content: right;margin-top:20px")
+                button.btn.btn-primary(type='submit') Send
+  else
+    .main
+      .carousel.carousel--asset-min-width.carousel--reduced-padding-top(data-component='Carousel' data-hero='true' data-component-mounted='true')
+        .carousel__slides(slides='')
+          .carousel__slides__slide(slide='')
+            .feature.feature--mobile-cta
+              .feature__container
+                .feature__chapter
+                  .feature__chapter__title
+                    | Email b&#x1EA3;o m&#x1EAD;t, th&ocirc;ng minh v&agrave; d&#x1EC5; s&#x1EED; d&#x1EE5;ng
+                  .feature__chapter__body.feature__chapter__body--long
+                    | Ho&agrave;n th&agrave;nh nhi&#x1EC1;u vi&#x1EC7;c h&#x1A1;n khi c&oacute; Gmail. Gmail nay &dstrok;&atilde; t&iacute;ch
+                    | h&#x1EE3;p Google Chat, Google Meet v&agrave; nhi&#x1EC1;u &#x1EE9;ng d&#x1EE5;ng kh&aacute;c, t&#x1EA5;t c&#x1EA3;
+                    | &dstrok;&#x1EC1;u &#x1EDF; c&ugrave;ng m&#x1ED9;t n&#x1A1;i.
+                  .feature__chapter__buttons
+                    .feature__chapter__button
+                      a.button(href='https://accounts.google.com/signup/v2/webcreateaccount?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&flowName=GlifWebSignIn&flowEntry=SignUp' data-action='create an account' data-category='cta' data-label='hero')
+                        span.mobile-tablet-only
+                          | T&#x1EA3;i
+                          | Gmail
+                        span.laptop-desktop-only
+                          | T&#x1EA1;o t&agrave;i
+                          | kho&#x1EA3;n
+                .feature__image
+                  .aspect-ratio-container.a94d85c15e0449ca
+                    .aspect-ratio-box
+                      picture
+                        source(type='image/webp' media='(min-width: 600px)' srcset='\
+                        https://lh3.googleusercontent.com/PWXM4hp9lRRezHTV86SqLwhRQMz4_Lk08jll3GkWBvBZy_Uk6kvUvwIrVilwaIW2mHZJoccchG6o9a5UdOJEwQPf9oJGmOGSglo3VW0=rw-e365-w2880')
+                        source(type='image/webp' media='(max-width: 599px)' srcset='\
+                        https://lh3.googleusercontent.com/A0azUqR4LXtIZAhqh7yPEihFjaPGeTZj0n1fLRWGtPkPlpoYCSu42R_dUp4OQEocrAnLq1r2_JC8pdwhgtQlTYQcMd8sLW1FDmgI9lCB=rw-e365-w2880')
+                        img(decoding='async' loading='eager' src='https://lh3.googleusercontent.com/A0azUqR4LXtIZAhqh7yPEihFjaPGeTZj0n1fLRWGtPkPlpoYCSu42R_dUp4OQEocrAnLq1r2_JC8pdwhgtQlTYQcMd8sLW1FDmgI9lCB' title='Màn hình hộp thư đến trong Gmail có các biểu\
+                        tượng chức năng được phóng to' alt='Màn hình hộp thư\
+                        đến trong Gmail có các biểu tượng chức năng được phóng\
+                        to')
+                .feature__buttons
+                  .feature__button
+                    a.button(href='https://accounts.google.com/signup/v2/webcreateaccount?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&flowName=GlifWebSignIn&flowEntry=SignUp' data-action='create an account' data-category='cta' data-label='hero')
+                      span.mobile-tablet-only
+                        | T&#x1EA3;i
+                        | Gmail
+                      span.laptop-desktop-only
+                        | T&#x1EA1;o t&agrave;i
+                        | kho&#x1EA3;n
+                  .feature__button
+                    a.button.button--low(href='https://workspace.google.com/products/gmail/index.html?utm_source=gmailforwork&utm_medium=et&utm_campaign=hero&utm_content=forwork' data-action='for work' data-category='cta' data-label='hero') D&agrave;nh cho c&ocirc;ng vi&#x1EC7;c
+      .spacer.spacer--large    
+      .touts
+        .touts__grid
+          .touts__grid__tout
+            .touts__grid__tout__chapter
+              .touts__grid__tout__chapter__icon
+                svg(width='46' height='46' viewbox='0 0 46 46' fill='none' xmlns='http://www.w3.org/2000/svg')
+                  circle(cx='23' cy='23' r='23' fill='#1A73E8')
+                  path(d='M19.9334\
+                  27.2936L15.6401 23.0002L14.209 24.4313L19.9334\
+                  30.1558L32.2001 17.8891L30.769 16.458L19.9334 27.2936Z' fill='white')
+              .touts__grid__tout__chapter__title
+                | L&agrave;m vi&#x1EC7;c v&#x1EDB;i c&aacute;c c&ocirc;ng c&#x1EE5; kh&aacute;c
+              .touts__grid__tout__chapter__body.touts__grid__tout__chapter__body--long
+                | Gmail ho&#x1EA1;t &dstrok;&#x1ED9;ng t&#x1ED1;t v&#x1EDB;i c&aacute;c &#x1EE9;ng d&#x1EE5;ng tr&ecirc;n m&aacute;y t&iacute;nh &dstrok;&#x1EC3; b&agrave;n nh&#x1B0;
+                | Microsoft Outlook, Apple Mail v&agrave; Mozilla Thunderbird, &dstrok;i k&egrave;m c&#x1EA3;
+                | t&iacute;nh n&abreve;ng &dstrok;&#x1ED3;ng b&#x1ED9; danh b&#x1EA1; v&agrave; s&#x1EF1; ki&#x1EC7;n.
+          .touts__grid__tout
+            .touts__grid__tout__chapter
+              .touts__grid__tout__chapter__icon
+                svg(width='46' height='46' viewbox='0 0 46 46' fill='none' xmlns='http://www.w3.org/2000/svg')
+                  circle(cx='23' cy='23' r='23' fill='#1A73E8')
+                  path(d='M32.2003 21.9782L34.2447 19.9337C30.4319 16.1208\
+                  25.1776 14.6693 20.2403 15.5279L22.8776 18.1653C26.251\
+                  18.1448 29.6345 19.4124 32.2003 21.9782ZM19.9336\
+                  28.1115L23.0003 31.1782L26.067 28.1115C24.3803 26.4146\
+                  21.6305 26.4146 19.9336 28.1115ZM30.1559 24.0226C29.0519\
+                  22.9186 27.7434 22.1315 26.3532 21.6408L29.4403\
+                  24.7279L30.1559 24.0226ZM14.2194 12.4102L12.7781\
+                  13.8515L15.8959 16.9693C14.4034 17.7155 13.003 18.6968\
+                  11.7559 19.9337L13.8003 21.9782C15.0576 20.7208 16.5092\
+                  19.7702 18.063 19.1364L20.3527 21.4262C18.6967 21.8657\
+                  17.143 22.7346 15.8447 24.0226L17.8892 26.067C19.2692 24.687\
+                  21.0683 23.9817 22.8879 23.9613L30.1252 31.1986L31.5665\
+                  29.7573L14.2194 12.4102Z' fill='white')
+              .touts__grid__tout__chapter__title.touts__grid__tout__chapter__title--long
+                | Lu&ocirc;n l&agrave;m vi&#x1EC7;c hi&#x1EC7;u qu&#x1EA3;, ngay c&#x1EA3; khi kh&ocirc;ng c&oacute; m&#x1EA1;ng
+              .touts__grid__tout__chapter__body.touts__grid__tout__chapter__body--long
+                | Gmail ngo&#x1EA1;i tuy&#x1EBF;n cho ph&eacute;p b&#x1EA1;n &dstrok;&#x1ECD;c, tr&#x1EA3; l&#x1EDD;i, x&oacute;a v&agrave; t&igrave;m ki&#x1EBF;m th&#x1B0;
+                | trong Gmail khi kh&ocirc;ng k&#x1EBF;t n&#x1ED1;i v&#x1EDB;i Internet.
+          .touts__grid__tout
+            .touts__grid__tout__chapter
+              .touts__grid__tout__chapter__icon
+                svg(width='46' height='46' viewbox='0 0 46 46' fill='none' xmlns='http://www.w3.org/2000/svg')
+                  circle(cx='23' cy='23' r='23' fill='#1A73E8')
+                  path(d='M34.1452 19.7549H27.4135C26.8525 19.7549 26.2915\
+                  20.2616 26.2915 20.7683V30.9022C26.2915 31.4089 26.8525\
+                  31.9156 27.4135 31.9156H34.1452C34.7062 31.9156 35.2672\
+                  31.4089 35.2672 30.9022V20.7683C35.2672 20.2616 34.7062\
+                  19.7549 34.1452 19.7549ZM33.0232\
+                  29.8888H28.5354V21.7817H33.0232V29.8888Z' fill='white')
+                  path(d='M13.0072 17.4059H33.4718V15.333H13.0072C11.7566\
+                  15.333 10.7334 16.2658 10.7334 17.4059V29.8429C10.7334\
+                  30.983 11.7566 31.9158 13.0072\
+                  31.9158H24.6038V29.8429H13.0072V17.4059Z' fill='white')
+              .touts__grid__tout__chapter__title
+                | Tr&#x1EA3;i nghi&#x1EC7;m Gmail tr&ecirc;n m&#x1ECD;i thi&#x1EBF;t b&#x1ECB;
+              .touts__grid__tout__chapter__body.touts__grid__tout__chapter__body--long
+                | Gmail lu&ocirc;n &dstrok;&#x1A1;n gi&#x1EA3;n v&agrave; d&#x1EC5; s&#x1EED; d&#x1EE5;ng, d&ugrave; s&#x1EED; d&#x1EE5;ng tr&ecirc;n thi&#x1EBF;t b&#x1ECB; n&agrave;o
+      .spacer.spacer--large.spacer--grey
+      .spacer.spacer--large
+      .ctas
+        .ctas__cta
+          .ctas__cta
+            .ctas__cta__container
+              .ctas__cta__chapter
+                .ctas__cta__chapter__icon
+                  svg(width='253' height='41' viewbox='0 0 253 41' fill='none' xmlns='http://www.w3.org/2000/svg')
+                    g(clip-path='url(#clip0)')
+                      path(d='M4.93546 34.0295H10.6934V20.0895L2.46777\
+                      13.9395V31.5695C2.46777 32.9225 3.57823 34.0295 4.93546\
+                      34.0295Z' fill='#4285F4')
+                      path(d='M30.4351 34.0295H36.193C37.5502 34.0295 38.6607\
+                      32.9225 38.6607 31.5695V13.9395L30.4351\
+                      20.0895V34.0295Z' fill='#34A853')
+                      path(d='M30.4351 9.42959V20.0896L38.6607\
+                      13.9396V10.6596C38.6607 7.62559 35.1648 5.86259 32.7382\
+                      7.70759L30.4351 9.42959Z' fill='#FBBC04')
+                      path(fill-rule='evenodd' clip-rule='evenodd' d='M10.6934\
+                      20.0897V9.42969L20.5641 16.8097L30.4348\
+                      9.42969V20.0897L20.5641 27.4697L10.6934 20.0897Z' fill='#EA4335')
+                      path(d='M2.46777 10.6603V13.9403L10.6934\
+                      20.0903V9.43028L8.39022 7.70828C5.96366 5.90428 2.46777\
+                      7.62628 2.46777 10.6603Z' fill='#C5221F')
+                    g(clip-path='url(#clip1)')
+                      path(d='M85.2471 13.1689H69.2944V29.072H85.2471V13.1689Z' fill='white')
+                      path(d='M72.5649 25.494C71.9667 25.0964 71.5679 24.5001\
+                      71.3286 23.7447L72.7245 23.1881C72.8441 23.6652 73.0834\
+                      24.023 73.3626 24.3013C73.6816 24.5796 74.0406 24.6988\
+                      74.4793 24.6988C74.918 24.6988 75.3168 24.5796 75.6358\
+                      24.3013C75.9549 24.023 76.1144 23.6652 76.1144\
+                      23.2676C76.1144 22.8302 75.9549 22.4724 75.596\
+                      22.1941C75.237 21.9158 74.8382 21.7965 74.3197\
+                      21.7965H73.5221V20.4448H74.24C74.6787 20.4448 75.0376\
+                      20.3255 75.3567 20.087C75.6757 19.8484 75.7954 19.5304\
+                      75.7954 19.093C75.7954 18.7352 75.6757 18.4172 75.3966\
+                      18.2184C75.1174 17.9798 74.7983 17.9003 74.3596\
+                      17.9003C73.9608 17.9003 73.6418 18.0196 73.4025\
+                      18.2184C73.1632 18.4172 73.0036 18.6955 72.884\
+                      19.0135L71.528 18.4569C71.7274 17.9401 72.0465 17.5027\
+                      72.5251 17.1052C73.0036 16.7076 73.6418 16.5088 74.3995\
+                      16.5088C74.9579 16.5088 75.4763 16.6281 75.915\
+                      16.8268C76.3537 17.0256 76.7127 17.3437 76.9519\
+                      17.7413C77.1912 18.1388 77.3508 18.5364 77.3508\
+                      19.0135C77.3508 19.4906 77.2311 19.9279 76.9918\
+                      20.246C76.7525 20.6038 76.4734 20.8424 76.1144\
+                      21.0412V21.1207C76.5531 21.3195 76.9519 21.5978 77.2311\
+                      21.9953C77.5103 22.3929 77.6698 22.8302 77.6698\
+                      23.3868C77.6698 23.9435 77.5502 24.4205 77.271\
+                      24.8181C76.9918 25.2555 76.6329 25.5735 76.1144\
+                      25.8121C75.6358 26.0506 75.0775 26.1699 74.4793\
+                      26.1699C73.8013 26.0904 73.1632 25.8916 72.5649 25.494Z' fill='#4285F4')
+                      path(d='M81.0589 18.6558L79.5434 19.7691L78.7856\
+                      18.6161L81.4976 16.668H82.5345V25.8917H81.0589V18.6558Z' fill='#4285F4')
+                      path(d='M85.2471\
+                      29.0723H69.2944V36.2286H85.2471V29.0723Z' fill='#34A853')
+                      path(d='M85.2472 6.0127H64.5086C63.1925 6.0127 62.1157\
+                      7.08615 62.1157\
+                      8.39815V29.0721H69.2944V13.1691H85.2472V6.0127Z' fill='#4285F4')
+                      path(d='M62.1157 29.0723V33.8432C62.1157 35.1552 63.1925\
+                      36.2286 64.5086 36.2286H69.2944V29.0723H62.1157Z' fill='#188038')
+                      path(d='M92.4258 13.1689H85.2471V29.072H92.4258V13.1689Z' fill='#FBBC04')
+                      path(d='M92.4258 13.1691V8.39815C92.4258 7.08615 91.349\
+                      6.0127 90.0329 6.0127H85.2471V13.1691H92.4258Z' fill='#1967D2')
+                      path(d='M85.2471 36.2286L92.4258\
+                      29.0723H85.2471V36.2286Z' fill='#EA4335')
+                    g(clip-path='url(#clip2)')
+                      path(d='M114.857 31.8982L116.42 34.6452C116.749 35.2192\
+                      117.242 35.6702 117.777 35.9982L123.453\
+                      26.2402H112.143C112.143 26.8962 112.307 27.5112 112.636\
+                      28.0852L114.857 31.8982Z' fill='#0066DA')
+                      path(d='M130.074 14.76L124.44 5.00195C123.864 5.32995\
+                      123.412 5.78095 123.083 6.35495L112.636 24.395C112.307\
+                      24.969 112.143 25.584 112.143 26.24H123.453L130.074\
+                      14.76Z' fill='#00AC47')
+                      path(d='M130.074 14.7598L135.75 5.00177C135.174 4.67377\
+                      134.557 4.50977 133.899 4.50977H126.29C125.632 4.50977\
+                      125.015 4.71477 124.439 5.00177L130.074 14.7598Z' fill='#00832D')
+                      path(d='M136.736 26.2402H123.452L117.817 35.9982C118.393\
+                      36.3262 119.01 36.4902 119.668 36.4902H140.52C141.178\
+                      36.4902 141.795 36.3262 142.371 35.9982L136.736\
+                      26.2402Z' fill='#2684FC')
+                      path(d='M142.371 35.9982C142.947 35.6702 143.399 35.2192\
+                      143.728 34.6452L144.387 33.4972L147.553 28.0852C147.882\
+                      27.5112 148.047 26.8962 148.047 26.2402H136.778L142.371\
+                      35.9982Z' fill='#EA4335')
+                      path(d='M142.331 15.375L137.108 6.35495C136.779 5.78095\
+                      136.326 5.32995 135.75 5.00195L130.075 14.76L136.696\
+                      26.24H148.007C148.007 25.584 147.842 24.969 147.513\
+                      24.395L142.331 15.375Z' fill='#FFBA00')
+                    g(clip-path='url(#clip3)')
+                      path(d='M177.972 29.8682H169.198V36.2294C169.198 37.5414\
+                      170.275 38.6148 171.591 38.6148H177.972V29.8682Z' fill='#00832D')
+                      path(d='M177.972 3.62793H171.591C170.275 3.62793 169.198\
+                      4.70138 169.198\
+                      6.01338V12.3746V21.1213V29.8679H177.972V21.1213V12.3746H185.949V3.62793H177.972Z' fill='#FFBA00')
+                      path(d='M194.723 29.8682H185.949V38.6148H192.33C193.646\
+                      38.6148 194.723 37.5414 194.723 36.2294V29.8682Z' fill='#0066DA')
+                      path(d='M185.949\
+                      29.8682H177.972V38.6148H185.949V29.8682Z' fill='#00AC47')
+                      path(d='M185.949\
+                      12.375V21.1217V29.8683H194.723V21.1217V12.375H185.949Z' fill='#2684FC')
+                      path(d='M185.949 3.62793V12.3746H194.723L185.949\
+                      3.62793Z' fill='#EA4335')
+                    g(clip-path='url(#clip4)')
+                      path(d='M234.698 20.5004L238.194 24.5184L242.924\
+                      27.5114L243.746 20.5414L242.924 13.7354L238.112\
+                      16.3594L234.698 20.5004Z' fill='#00832D')
+                      path(d='M214.34 26.855V32.8C214.34 34.153 215.45 35.26\
+                      216.808 35.26H222.771L224.005 30.75L222.771\
+                      26.855L218.658 25.625L214.34 26.855Z' fill='#0066DA')
+                      path(d='M222.771 5.74023L214.34 14.1452L218.658\
+                      15.3752L222.771 14.1452L224.005 10.2912L222.771\
+                      5.74023Z' fill='#E94235')
+                      path(d='M222.771 14.1455H214.34V26.8555H222.771V14.1455Z' fill='#2684FC')
+                      path(d='M248.312 9.30678L242.924 13.6938V27.5108L248.353\
+                      31.9388C249.175 32.5538 250.327 31.9798 250.327\
+                      30.9548V10.2498C250.327 9.22478 249.134 8.65078 248.312\
+                      9.30678Z' fill='#00AC47')
+                      path(d='M234.698\
+                      20.5V26.855H222.771V35.26H240.456C241.813 35.26 242.924\
+                      34.153 242.924 32.8V27.511L234.698 20.5Z' fill='#00AC47')
+                      path(d='M240.456\
+                      5.74023H233.999H222.771V14.1452H234.698V20.5002L242.924\
+                      13.6942V8.20023C242.924 6.84723 241.813 5.74023 240.456\
+                      5.74023Z' fill='#FFBA00')
+                    defs
+                      clippath#clip0
+                        rect(width='36.1927' height='27.06' fill='white' transform='translate(2.46777 6.96973)')
+                      clippath#clip1
+                        rect(width='30.3101' height='30.2158' fill='white' transform='translate(62.1157 6.0127)')
+                      clippath#clip2
+                        rect(width='35.9048' height='31.98' fill='white' transform='translate(112.143 4.50977)')
+                      clippath#clip3
+                        rect(width='25.5243' height='34.9867' fill='white' transform='translate(169.198 3.62793)')
+                      clippath#clip4
+                        rect(width='35.9871' height='29.52' fill='white' transform='translate(214.34 5.74023)')
+                .ctas__cta__chapter__title.ctas__cta__chapter__title--long(div='')
+                  | Gmail nay &dstrok;&atilde; l&agrave; m&#x1ED9;t m&#x1EA3;nh gh&eacute;p trong Google Workspace
+                .ctas__cta__chapter__subtitle.ctas__cta__chapter__subtitle--long
+                  | C&#x1ED9;ng t&aacute;c nhanh h&#x1A1;n tr&ecirc;n m&#x1ECD;i thi&#x1EBF;t b&#x1ECB;, &#x1EDF; m&#x1ECD;i th&#x1EDD;i &dstrok;i&#x1EC3;m, t&#x1EA5;t c&#x1EA3;
+                  | &dstrok;&#x1EC1;u &#x1EDF; c&ugrave;ng m&#x1ED9;t n&#x1A1;i.
+                .ctas__cta__chapter__body.ctas__cta__chapter__body--long
+                  | Google Workspace l&agrave; b&#x1ED9; c&ocirc;ng c&#x1EE5; c&#x1ED9;ng t&aacute;c v&agrave; c&#x1EA3;i thi&#x1EC7;n hi&#x1EC7;u
+                  | su&#x1EA5;t, gi&uacute;p c&aacute;c c&aacute; nh&acirc;n, nh&oacute;m v&agrave; doanh nghi&#x1EC7;p lu&ocirc;n n&#x1EAF;m b&#x1EAF;t m&#x1ECD;i
+                  | th&#x1EE9;. Gi&#x1EA3;i ph&aacute;p linh ho&#x1EA1;t v&agrave; s&aacute;ng t&#x1EA1;o n&agrave;y t&#x1EAD;p h&#x1EE3;p t&#x1EA5;t c&#x1EA3; c&aacute;c
+                  | &#x1EE9;ng d&#x1EE5;ng b&#x1EA1;n y&ecirc;u th&iacute;ch nh&#x1B0; Gmail, L&#x1ECB;ch, Drive, T&agrave;i li&#x1EC7;u, Meet
+                  | v&agrave; nhi&#x1EC1;u &#x1EE9;ng d&#x1EE5;ng kh&aacute;c.
+                .ctas__cta__chapter__buttons
+                  .ctas__cta__chapter__button
+                    a.button.button--low.button--large-text(href='https://workspace.google.com/?utm_source=gmailforwork&utm_medium=et&utm_campaign=body&utm_content=learnmore' data-action='learn more' data-category='cta' data-label='gmail is now part of google workspace')
+                      | T&igrave;m
+                      | hi&#x1EC3;u th&ecirc;m
+      .spacer.spacer--large.spacer--grey
+      .spacer.spacer--large
+      .ctas.ctas--heading-2
+        .ctas__cta
+          .ctas__cta
+            .ctas__cta__container
+              .ctas__cta__chapter
+                .ctas__cta__chapter__icon
+                  svg(width='36' height='27' viewbox='0 0 36 27' fill='none' xmlns='http://www.w3.org/2000/svg')
+                    path(d='M2.45453 26.9996H8.18176V13.0939L0\
+                    6.95898V24.5456C0 25.9014 1.0984 26.9996 2.45453 26.9996Z' fill='#4285F4')
+                    path(d='M27.8182 26.9996H33.5455C34.9016 26.9996 36 25.9014\
+                    36 24.5456V6.95898L27.8182 13.0939V26.9996Z' fill='#34A853')
+                    path(d='M27.8182 2.46056V13.0943L36 6.95947V3.68754C36\
+                    0.654864 32.5371 -1.07722 30.1091 0.742797L27.8182\
+                    2.46056Z' fill='#FBBC04')
+                    path(fill-rule='evenodd' clip-rule='evenodd' d='M8.18182\
+                    13.0947V2.46094L17.9999 9.82279L27.818\
+                    2.46094V13.0947L17.9999 20.4566L8.18182 13.0947Z' fill='#EA4335')
+                    path(d='M0 3.68754V6.95947L8.18176 13.0943V2.46056L5.89087\
+                    0.742797C3.46293 -1.07722 0 0.654864 0 3.68754Z' fill='#C5221F')
+                .ctas__cta__chapter__title.ctas__cta__chapter__title--long
+                  | T&#x1EF1; tin th&#x1EC3; hi&#x1EC7;n 
+                  br(desktop-only='')
+                  |  phong c&aacute;ch l&agrave;m vi&#x1EC7;c.
+                .ctas__cta__chapter__subtitle
+                  | L&agrave;m quen v&#x1EDB;i phi&ecirc;n b&#x1EA3;n Gmail m&#x1EA1;nh m&#x1EBD; h&#x1A1;n.
+                .ctas__cta__chapter__buttons
+                  .ctas__cta__chapter__button
+                    a.button(href='https://accounts.google.com/signup/v2/webcreateaccount?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&flowName=GlifWebSignIn&flowEntry=SignUp' data-action='create an account' data-category='cta' data-label='get started')
+                      span.mobile-tablet-only
+                        | T&#x1EA3;i
+                        | Gmail
+                      span.laptop-desktop-only
+                        | T&#x1EA1;o t&agrave;i
+                        | kho&#x1EA3;n
+                  .ctas__cta__chapter__button
+                    a.button.button--low(href='https://workspace.google.com/products/gmail/index.html?utm_source=gmailforwork&utm_medium=et&utm_campaign=footer&utm_content=forwork' data-action='for work' data-category='cta' data-label='get\
+                    started') D&agrave;nh cho c&ocirc;ng vi&#x1EC7;c
+        .ctas__images-grid
+          .ctas__images-grid__image
+            .aspect-ratio-container.a4fb87add81a4be6
+              .aspect-ratio-box
+                picture
+                  source(type='image/webp' media='(min-width: 600px)' srcset='\
+                  https://lh3.googleusercontent.com/2oSWh6r_utxN6yagJ8CDNGktMjCSZAw7EsrwNeYq6wmnm9qneA2ZrkIeZzylCiawALG7CqmsBQD-JRBvayjGKYCC6eiLVMlLaRKZ-iA=rw-e365-w2880')
+                  source(type='image/webp' media='(max-width: 599px)' srcset='\
+                  https://lh3.googleusercontent.com/NYuACq4aOUJ7akP3V-rkysWU4cwrn2B4Q4OUi5991wk34JKO56Dn7Or_jq43RKIhPt2zhLAYApcNP07qaD-cW5Mpcaa5S5E3GxomNfV_=rw-e365-w2880')
+                  img(decoding='async' loading='lazy' src='https://lh3.googleusercontent.com/NYuACq4aOUJ7akP3V-rkysWU4cwrn2B4Q4OUi5991wk34JKO56Dn7Or_jq43RKIhPt2zhLAYApcNP07qaD-cW5Mpcaa5S5E3GxomNfV_' title='Màn hình hộp thư đến trong Gmail có các biểu tượng\
+                  chức năng phóng to được sắp xếp theo chiều ngang' alt='Màn\
+                  hình hộp thư đến trong Gmail có các biểu tượng chức năng\
+                  phóng to được sắp xếp theo chiều ngang')

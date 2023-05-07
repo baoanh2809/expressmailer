@@ -1,0 +1,101 @@
+extend base 
+block content
+  if(user)
+    .main_body
+      // slide bar
+      .sidebar
+        button.sidebar_compose(id="newEmail" data-toggle='modal' data-target='#exampleModal')
+          span.material-symbols-outlined Add
+          |Compose
+        a.sidebarOptions(href='/')
+          span.material-symbols-outlined inbox
+          h3 Inbox
+        a.sidebarOptions(href='/startedmail')
+          span.material-symbols-outlined star
+          h3 started
+        a.sidebarOptions(href='/trashmail')
+          span.material-symbols-outlined delete
+          h3 Trash
+        a.sidebarOptions(href='/importantmail')
+          span.material-symbols-outlined label_important
+          h3 Important
+        a.sidebarOptions(href='/sentmail')
+          span.material-symbols-outlined send
+          h3 Sent
+        a.sidebarOptions.sidebarOptions_active(href='/draftmail')
+          span.material-symbols-outlined drafts
+          h3 Drafts
+        a.sidebarOptions
+          span.material-symbols-outlined expand_more
+          h3 More
+        .sildebar_footer
+          .sidebar_footerIcons
+            span.material-symbols-outlined person
+            span.material-symbols-outlined duo
+            span.material-symbols-outlined phone
+      // slide bar End
+      .emailLists
+        // settings sends
+        .emailList_settings
+          .emailLists_settingsLeft
+            input(type='checkbox')
+            span.material-symbols-outlined  arrow_drop_down
+            span.material-symbols-outlined  redo
+            span.material-symbols-outlined  more_Vert
+          .emailLists_settingsRight
+            span.material-symbols-outlined  chevron_left
+            span.material-symbols-outlined  chevron_right
+            span.material-symbols-outlined  keyboard_hide
+            span.material-symbols-outlined settings
+        // setting End
+        // Section Started
+        .emailList_sections
+          .section.section_selected
+            span.material-symbols-outlined inbox
+            h4 Primary
+          .section
+            span.material-symbols-outlined people
+            h4 Social
+          .section
+            span.material-symbols-outlined local_offer
+            h4 Promotions
+        // Section End
+        // emailList Started
+        if(mails)               
+          each mail,i in mails 
+            if(mail.from == user.userName && mail.drafts == "yes")              
+              .emailList(id=`email${i+1}` data-id=`${mail.id}`) 
+                .emailList_options                   
+                h3.emailList_title(style="color:black")= mail.subject
+                .emailList_message            
+                  h4.emailList_description= mail.content                    
+                .emailList_time                                  
+                  p(id=`time${i}` class="time" style="color:black"  data-date=`${mail.createdAt}`)=timeSend 
+                ul.menu(id=`menu${i+1}`)
+                  li.menu-item.btn-danger-soft(style="display:flex;justify-content:center")
+                    button.btn.btn-sm.btn-danger-soft.btn-add-started(style="color: white;" data-id=`${mail.id}` data-change="started" type="submit") Start 
+                  li.menu-item.btn.btn-sm.btn-danger-soft()
+                    button.btn.btn-sm.btn-danger-soft.btn-add-started(style="color: white" data-id=`${mail.id}` data-change="important" type="submit" ) Important 
+                  li.menu-item.btn.btn-sm.btn-danger-soft()
+                    button.btn.btn-sm.btn-danger-soft.btn-add-started(style="color: white"  data-id=`${mail.id}` data-change="delelte" type="submit") Delete
+        // emailLists End
+    // Main Body End
+    // Modal
+    #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+      .modal-dialog(style='margin: 0px;' role='document')
+        .modal-content
+          .modal-header(style='background-color: black; color: aliceblue;')
+            h5#exampleModalLabel.modal-title New Email
+            button.close(type='button' style='color: gray;' data-dismiss='modal' aria-label='Close')
+              span(aria-hidden='true') &times;
+          .modal-body
+            form.form-mail-send
+              input#id(type='hidden' )
+              input#to(name='to' placeholder='To' type='email')
+              input#subject(name='subject' placeholder='Subject' type='text')
+              div(style='display: none')
+              .form-field.col.col-sm-12(style="padding:0px")
+                textarea#content.form-control(style='font-size:1rem ;height: 182px;'  rows='5' name='content' placeholder='Nhập nội dung của bạn*') 
+              .modal-bottom(style="display: flex; justify-content: right;margin-top:20px")
+                button.btn.btn-primary(type='submit') Send
+  

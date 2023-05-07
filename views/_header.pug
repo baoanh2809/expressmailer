@@ -1,0 +1,60 @@
+nav.navbar-top.navbar.navbar-expand-lg.navbar-light.py-2.bg-white.fixed-top.border-bottom
+  .container
+    a.navbar-brand(href='/')
+      img.navbar-brand-img(src='https://express-mailer.netlify.app/static/media/email.6673f8e5.png' style="max-height: 3.4rem;" alt='...')
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarCollapse.collapse.navbar-collapse
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation')
+        i.fe.fe-x       
+      if user
+        .header
+          .header_left
+            span.material-symbols-outlined
+              | menu
+            a(href='/') 
+              img(src='https://express-mailer.netlify.app/static/media/email.6673f8e5.png' alt='Image\
+            Gmail' style='width: 60px;')
+          .header_middle
+            span.material-symbols-outlined
+              | search
+            input(type='text' placeholder='Search Mail')
+            span.material-symbols-outlined arrow_drop_down
+          .header_right
+            span.material-symbols-outlined apps
+            span.material-symbols-outlined notifications
+            ul.navbar-nav.ms-auto
+              li.nav-item.dropdown
+                a#navbarUser.nav-link.dropdown-toggle(data-bs-toggle='dropdown' href='#' aria-haspopup='true' aria-expanded='false')
+                  .avatar.avatar-lg
+                    img.avatar-img.rounded-circle(src=`/img/users/${user.photo}`)
+                  strong.mx-2(style='text-transform: uppercase;vertical-align: middle')=user.name            
+                  svg(width='12px' height='6px' viewbox='0 0 12 6' xmlns='http://www.w3.org/2000/svg')
+                    polygon(fill='#1F303C' points='5 5.7 0 0.7 0.7 0 5 4.4 9.3 0 10 0.7 ')
+                .dropdown-menu.px-0.py-3(aria-labelledby='navbarUser' style="margin-left:-62px; width:250px")
+                  .list-group.list-group-flush
+                    a.list-group-item.p-3(href='/user/me')
+                      .icon.icon-sm.text-primary.avatar.avatar-xl
+                        img.avatar-img.rounded-circle(src=`/img/users/${user.photo}`)
+                      .ms-4
+                        h6.fw-bold.text-uppercase.text-primary.mb-0= user.name
+                        p.fs-sm.text-gray-700.mb-0=user.email
+                    a.list-group-item.p-3(href='/user/me')
+                      svg.bi.bi-person-circle(xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewbox='0 0 16 16')
+                        path(d='M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z')
+                        path(fill-rule='evenodd' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z')
+                      span.ms-2 Thi&#x1EBF;t l&#x1EAD;p t&agrave;i kho&#x1EA3;n
+                    if(user.role== "admin")
+                      a.list-group-item.p-3(href='/user/me')
+                        svg.bi.bi-person-circle(xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewbox='0 0 16 16')
+                          path(d='M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z')
+                          path(fill-rule='evenodd' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z')
+                        span.ms-2 Admin    
+                    a.list-group-item.p-3.nav__el--logout(href='/')
+                      svg.bi.bi-box-arrow-right(xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewbox='0 0 16 16')
+                        path(fill-rule='evenodd' d='M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z')
+                        path(fill-rule='evenodd' d='M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z')
+                      span.ms-2 &Dstrok;&abreve;ng xu&#x1EA5;t
+      else
+        a.navbar-btn.btn.btn-sm.btn-danger.ms-auto(href='/user/signin') &Dstrok;&abreve;ng nh&#x1EAD;p
+
